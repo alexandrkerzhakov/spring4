@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<style>
+    h1 {
+        color: blue;
+    }
+</style>
+<h1>Students</h1>
+<h2>View students</h2>
+
+<table>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #36c;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #eee;
+        }
+    </style>
+
+    <tr>
+        <th>Student firstName</th>
+        <th>Student lastName</th>
+        <th>Student age</th>
+    </tr>
+    <tr th:each="student: ${students}">
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.age}"></td>
+    </tr>
+</table>
+
+<h2>Add a student</h2>
+<form action="/students" method="post">
+    FirstName: <input type="text" name="firstName"><br/>
+    LastName: <input type="text" step="any" name="lastName"><br/>
+    Age: <input type="number" step="any" name="age"><br/>
+    <button type="submit">Add student</button>
+</form>
+</body>
+</html>
